@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>108a602d-1b73-4fa0-aa7b-d91ed19697df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ImageAnalysis.py</StartupFile>
+    <StartupFile>perler-bead-map-test\perler_colors.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ImageAnalysis.py" />
+    <Compile Include="perler-bead-map-test\perler_colors.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -40,7 +41,14 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="perler-bead-map-test\beads.hex.txt" />
+    <Content Include="perler-bead-map-test\LICENSE" />
+    <Content Include="perler-bead-map-test\Perler.gpl" />
+    <Content Include="perler-bead-map-test\README.md" />
     <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="perler-bead-map-test\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
