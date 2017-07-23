@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import os
 import json
 import logging
 
@@ -11,9 +12,9 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # Open image
-im = Image.open("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/image.bmp")
+im = Image.open("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/test2.bmp")
 px = im.load()
-peg_num = 29 # Size of pegboard. 2 = 2x2 board, 29 = 29x29, etc...
+peg_num = 3 # Size of pegboard. 2 = 2x2 board, 29 = 29x29, etc...
 
 
 logger.info('Image Format: {0}'.format(im.format))
@@ -54,26 +55,6 @@ brx = peg_num
 bry = peg_num 
 
 
-
-# Region dict example
-'''
-1-1: {
-	1-1: (255,255,255),
-	1-2: (255,255,255),
-	1-2: (255,255,255),
-	2-2: (255,255,255)
-},
-1-2: {
-	1-1: (255,0,0),
-	1-2: (255,0,0),
-	1-2: (255,0,0),
-	2-2: (255,0,0)
-}
-'''
-
-json_data = {}
-
-
 col_count = 0
 row_count = 0
 do_once = False
@@ -84,10 +65,12 @@ for rows in range(0, int(y_boards) + is_y_spare_pegs):
 		# Change size of region if iterating on spare peg region
 		if col_count == int(x_boards):
 			brx = brx - peg_num + x_spare_pegs
+			logger.debug('Changed x size')	
 		if row_count == int(y_boards) and do_once == False:
 			bry = bry - peg_num + y_spare_pegs
-			print('did once')
 			do_once = True # Only change x value once, otherise it will try to save a None image
+			logger.debug('Changed y size')	
+			logger.debug('Did once')	
 
 		region_id = '{0}-{1}'.format(row_count,col_count)
 		logger.info('Region ID: {0}'.format(region_id))	
@@ -97,7 +80,7 @@ for rows in range(0, int(y_boards) + is_y_spare_pegs):
 		region = im.crop(box)
 
 		# Save region
-		region.save("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/regions/test{0}.bmp".format(region_id))
+		region.save("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/regions/test_{0}.bmp".format(region_id))
 
 		# Iterate on x values
 		tlx += peg_num
@@ -116,10 +99,5 @@ for rows in range(0, int(y_boards) + is_y_spare_pegs):
 			col_count = 0
 			row_count += 1
 
-region = im.crop(box)
 
 
-#region = region.transpose(Image.ROTATE_180)
-#im.paste(region, box)
-
-#im.show()

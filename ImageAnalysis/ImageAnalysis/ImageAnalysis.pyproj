@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>108a602d-1b73-4fa0-aa7b-d91ed19697df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>image_disperse.py</StartupFile>
+    <StartupFile>region_parse.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,6 +30,9 @@
     <Compile Include="bead-designer-test\gui\designer.py" />
     <Compile Include="image_disperse.py" />
     <Compile Include="perler-bead-map-test\perler_colors.py" />
+    <Compile Include="region_parse.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
