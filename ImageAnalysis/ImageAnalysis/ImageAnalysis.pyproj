@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>108a602d-1b73-4fa0-aa7b-d91ed19697df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>perler-bead-map-test\perler_colors.py</StartupFile>
+    <StartupFile>image_disperse.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,7 +24,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ImageAnalysis.py" />
+    <Compile Include="bead-designer-test\beads.py" />
+    <Compile Include="bead-designer-test\gui\BeadDesignDesigner.py" />
+    <Compile Include="bead-designer-test\gui\beadgui.py" />
+    <Compile Include="bead-designer-test\gui\designer.py" />
+    <Compile Include="image_disperse.py" />
     <Compile Include="perler-bead-map-test\perler_colors.py" />
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +45,21 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bead-designer-test\colours\all.csv" />
+    <Content Include="bead-designer-test\colours\bead_colour_chard_with_rgb_with_brand.pdf" />
+    <Content Include="bead-designer-test\colours\colourchart_GB.pdf" />
+    <Content Include="bead-designer-test\colours\colour_table.xls" />
+    <Content Include="bead-designer-test\colours\colour_table.xlsx" />
+    <Content Include="bead-designer-test\gui\beadgui.pyc" />
+    <Content Include="bead-designer-test\gui\beads.fbp" />
+    <Content Include="bead-designer-test\gui\designer.png" />
+    <Content Include="bead-designer-test\gui\generate.png" />
+    <Content Include="bead-designer-test\gui\open.png" />
+    <Content Include="bead-designer-test\gui\save.png" />
+    <Content Include="bead-designer-test\output\resulta00ff4de-db03-11e0-909d-aa2721d52be4.pdf" />
+    <Content Include="bead-designer-test\output\resulta7191aa1-db03-11e0-90fe-aa2721d52be4.pdf" />
+    <Content Include="bead-designer-test\output\resultac48774f-db03-11e0-a077-aa2721d52be4.pdf" />
+    <Content Include="bead-designer-test\output\resultaffec48f-a843-11e1-9268-d653334aac3d.pdf" />
     <Content Include="perler-bead-map-test\beads.hex.txt" />
     <Content Include="perler-bead-map-test\LICENSE" />
     <Content Include="perler-bead-map-test\Perler.gpl" />
@@ -48,6 +67,10 @@
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bead-designer-test\" />
+    <Folder Include="bead-designer-test\colours\" />
+    <Folder Include="bead-designer-test\gui\" />
+    <Folder Include="bead-designer-test\output\" />
     <Folder Include="perler-bead-map-test\" />
   </ItemGroup>
   <PropertyGroup>
