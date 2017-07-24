@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>108a602d-1b73-4fa0-aa7b-d91ed19697df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>region_parse.py</StartupFile>
+    <StartupFile>image_disperse.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
