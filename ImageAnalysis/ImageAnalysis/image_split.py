@@ -16,7 +16,6 @@ im = Image.open("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_
 px = im.load()
 peg_num = 29 # Size of pegboard. 2 = 2x2 board, 29 = 29x29, etc...
 
-
 logger.info('Image Format: {0}'.format(im.format))
 logger.info('Image Size: {0}'.format(im.size))
 logger.info('Image Mode: {0}'.format(im.mode))
