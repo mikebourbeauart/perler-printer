@@ -7,30 +7,25 @@ Author: borbs
 #include <Servo.h>
 
 // Horizontal axis
-#define StepPinY                2
-#define DirectionPinY           3
-#define StepPinX                4
-#define DirectionPinX           5
-#define JoyH_Y                 A1
-#define JoyH_X                 A0
-																																																												#define JoySwitch 2 // Joystick switch connected to interrupt Pin 2 on UNO
-/*
-#define RPMS                104.0
-#define STEPS_PER_REV         200
-#define MICROSTEPS_PER_STEP     8
-#define MICROSECONDS_PER_MICROSTEP   (1000000/(STEPS_PER_REV * MICROSTEPS_PER_STEP)/(RPMS / 60))
-*/
+#define StepPinH_Y                2
+#define DirectionPinH_Y           3
+#define StepPinH_X                4
+#define DirectionPinH_X           5
+#define JoyH_Y                    A1
+#define JoyH_X                    A0
+
+// Vertical axis
+#define StepPinV_Y                6
+#define DirectionPinV_Y           7
+#define JoyV_Y                    A2
+#define JoyV_X                    A3
+#define ServoV                    10
+
 
 Servo dvd_down;
-// Define a stepper and the pins it will use
-
-//int joyY = A1;
-//int y;
-
-//int angle = 0;
 
 
-//int pos = 12600;
+
 /*
 void setup()
 {
@@ -52,21 +47,29 @@ void loop()
 
 void setup() {
 	// Big
-	pinMode(DirectionPinY, OUTPUT);
-	pinMode(StepPinY, OUTPUT);
-	digitalWrite(StepPinY, LOW);
-	digitalWrite(DirectionPinY, LOW);
+	pinMode(DirectionPinH_Y, OUTPUT);
+	pinMode(StepPinH_Y, OUTPUT);
+	digitalWrite(StepPinH_Y, LOW);
+	digitalWrite(DirectionPinH_Y, LOW);
 
 	// Scanner
-	pinMode(DirectionPinX, OUTPUT);
-	pinMode(StepPinX, OUTPUT);
-	digitalWrite(StepPinX, LOW);
-	digitalWrite(DirectionPinX, LOW);
+	pinMode(DirectionPinH_X, OUTPUT);
+	pinMode(StepPinH_X, OUTPUT);
+	digitalWrite(StepPinH_X, LOW);
+	digitalWrite(DirectionPinH_X, LOW);
+
+	// DVD
+	pinMode(DirectionPinV_Y, OUTPUT);
+	pinMode(StepPinV_Y, OUTPUT);
+	digitalWrite(StepPinV_Y, LOW);
+	digitalWrite(DirectionPinV_Y, LOW);
+
+	dvd_down.attach(ServoV);
 
 	Serial.begin(9600);
 	Serial.print("Ready");
 
-	//dvd_down.attach(10);
+
 }
 
 
@@ -74,74 +77,98 @@ void loop() {
 
 	//Serial.println(analogRead(JoyH_X));
 	//Serial.println(analogRead(JoyH_Y));
-	
+	Serial.println(analogRead(JoyV_Y));
+	Serial.println(analogRead(JoyV_X));
+
+	// Big
 	if (analogRead(JoyH_Y)<400)
 	{
 		move_big();
-		digitalWrite(DirectionPinY, LOW);
+		digitalWrite(DirectionPinH_Y, LOW);
 	}
 
 	if (analogRead(JoyH_Y)>600)
 	{
 		move_big();
-		digitalWrite(DirectionPinY, HIGH);
+		digitalWrite(DirectionPinH_Y, HIGH);
 	}
 	
+	// Scanner
 	if (analogRead(JoyH_X)<400)
 	{
 		move_scanner();
-		digitalWrite(DirectionPinX, LOW);
+		digitalWrite(DirectionPinH_X, HIGH);
 	}
 
 	if (analogRead(JoyH_X)>600)
 	{
 		move_scanner();
-		digitalWrite(DirectionPinX, HIGH);
+		digitalWrite(DirectionPinH_X, LOW);
 	}
 
-	/*
-	if (poy<400)
+	// DVD
+	if (analogRead(JoyV_Y)<400)
 	{
-		y = joyY;
-		y = map(analogRead(joyY), 0, 1023, 900, 2100);
-		dvd_down.write(y);
-		delay(15);
+		move_dvd();
+		digitalWrite(DirectionPinV_Y, HIGH);
 	}
 
-	if (poy>600)
+	if (analogRead(JoyV_Y)>600)
 	{
-		y = joyY;
-		y = map(analogRead(joyY), 0, 1023, 900, 2100);
-		dvd_down.write(y);
-		delay(15);
+		move_dvd();
+		digitalWrite(DirectionPinV_Y, LOW);
 	}
-*/
+
+	// Servo
+
+	if (analogRead(JoyV_X)<400)
+	{
+		int y = map(analogRead(JoyV_X), 0, 1023, 900, 2100);
+		dvd_down.write(y);
+		delay(1000);
+	}
+
+	if (analogRead(JoyV_X)>600)
+	{
+		int y = map(analogRead(JoyV_X), 0, 1023, 900, 2100);
+		dvd_down.write(y);
+		delay(1000);
+	}
+
 }
 
 void move_big() // big motor
 {
-	digitalWrite(StepPinY, HIGH);
+	digitalWrite(StepPinH_Y, HIGH);
 	delayMicroseconds(100); //big motor
 
-	digitalWrite(StepPinY, LOW);
+	digitalWrite(StepPinH_Y, LOW);
 	delayMicroseconds(100); //big motor
 }
 
 void move_scanner()
 {
-	digitalWrite(StepPinX, HIGH);
-	delayMicroseconds(1); //scanner
+	digitalWrite(StepPinH_X, HIGH);
+	delayMicroseconds(.01); //scanner
 
-	digitalWrite(StepPinX, LOW);
-	delayMicroseconds(1); //scanner
+	digitalWrite(StepPinH_X, LOW);
+	delayMicroseconds(.01); //scanner
 }
-/*
+
 void move_dvd()
 {
-	digitalWrite(STEP_PIN, HIGH);
+	digitalWrite(StepPinV_Y, HIGH);
 	delayMicroseconds(700); //DVD
 
-	digitalWrite(STEP_PIN, LOW);
+	digitalWrite(StepPinV_Y, LOW);
 	delayMicroseconds(700); //DVD
 }
-*/
+
+void move_servo()
+{
+	digitalWrite(StepPinV_Y, HIGH);
+	delayMicroseconds(700); //DVD
+
+	digitalWrite(StepPinV_Y, LOW);
+	delayMicroseconds(700); //DVD
+}
