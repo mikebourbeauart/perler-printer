@@ -5,30 +5,32 @@ Author: borbs
 */
 
 #include <Servo.h>
-#include <AccelStepper.h>
 
+// Horizontal axis
+#define StepPinY                2
+#define DirectionPinY           3
+#define StepPinX                4
+#define DirectionPinX           5
+#define JoyH_Y                 A1
+#define JoyH_X                 A0
+																																																												#define JoySwitch 2 // Joystick switch connected to interrupt Pin 2 on UNO
+/*
 #define RPMS                104.0
-#define STEP_PIN                2
-#define DIRECTION_PIN           3
-
 #define STEPS_PER_REV         200
 #define MICROSTEPS_PER_STEP     8
 #define MICROSECONDS_PER_MICROSTEP   (1000000/(STEPS_PER_REV * MICROSTEPS_PER_STEP)/(RPMS / 60))
-
+*/
 
 Servo dvd_down;
 // Define a stepper and the pins it will use
-//AccelStepper stepper(AccelStepper::DRIVER, STEP_PIN, DIRECTION_PIN);
 
-int joyY = A1;
-int y;
+//int joyY = A1;
+//int y;
 
-int pox, poy;
-
-int angle = 0;
+//int angle = 0;
 
 
-int pos = 12600;
+//int pos = 12600;
 /*
 void setup()
 {
@@ -49,36 +51,55 @@ void loop()
 */
 
 void setup() {
-	pinMode(DIRECTION_PIN, OUTPUT);
-	pinMode(STEP_PIN, OUTPUT);
-	digitalWrite(STEP_PIN, LOW);
-	digitalWrite(DIRECTION_PIN, LOW);
+	// Big
+	pinMode(DirectionPinY, OUTPUT);
+	pinMode(StepPinY, OUTPUT);
+	digitalWrite(StepPinY, LOW);
+	digitalWrite(DirectionPinY, LOW);
+
+	// Scanner
+	pinMode(DirectionPinX, OUTPUT);
+	pinMode(StepPinX, OUTPUT);
+	digitalWrite(StepPinX, LOW);
+	digitalWrite(DirectionPinX, LOW);
+
 	Serial.begin(9600);
 	Serial.print("Ready");
 
-	dvd_down.attach(10);
+	//dvd_down.attach(10);
 }
 
 
 void loop() {
-	pox = analogRead(A0);
-	poy = analogRead(A1);
-	//Serial.println(pox);
-	//Serial.println(poy);
 
-	if (pox<400)
+	//Serial.println(analogRead(JoyH_X));
+	//Serial.println(analogRead(JoyH_Y));
+	
+	if (analogRead(JoyH_Y)<400)
 	{
-		kreni();
-		digitalWrite(DIRECTION_PIN, LOW);
+		move_big();
+		digitalWrite(DirectionPinY, LOW);
 	}
 
-	if (pox>600)
+	if (analogRead(JoyH_Y)>600)
 	{
-		kreni();
-		digitalWrite(DIRECTION_PIN, HIGH);
+		move_big();
+		digitalWrite(DirectionPinY, HIGH);
+	}
+	
+	if (analogRead(JoyH_X)<400)
+	{
+		move_scanner();
+		digitalWrite(DirectionPinX, LOW);
 	}
 
-/*
+	if (analogRead(JoyH_X)>600)
+	{
+		move_scanner();
+		digitalWrite(DirectionPinX, HIGH);
+	}
+
+	/*
 	if (poy<400)
 	{
 		y = joyY;
@@ -97,14 +118,30 @@ void loop() {
 */
 }
 
-void kreni()
+void move_big() // big motor
 {
-	digitalWrite(STEP_PIN, HIGH);
-	delayMicroseconds(1); //scanner
-	//delayMicroseconds(700); //DVD
+	digitalWrite(StepPinY, HIGH);
+	delayMicroseconds(100); //big motor
 
-	digitalWrite(STEP_PIN, LOW);
-	delayMicroseconds(1); //scanner
-	//delayMicroseconds(700); //DVD
+	digitalWrite(StepPinY, LOW);
+	delayMicroseconds(100); //big motor
 }
 
+void move_scanner()
+{
+	digitalWrite(StepPinX, HIGH);
+	delayMicroseconds(1); //scanner
+
+	digitalWrite(StepPinX, LOW);
+	delayMicroseconds(1); //scanner
+}
+/*
+void move_dvd()
+{
+	digitalWrite(STEP_PIN, HIGH);
+	delayMicroseconds(700); //DVD
+
+	digitalWrite(STEP_PIN, LOW);
+	delayMicroseconds(700); //DVD
+}
+*/
