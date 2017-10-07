@@ -25,6 +25,7 @@ Author: borbs
 int start_pos = 100;
 int end_pos = 145;
 int rot_speed = 30;
+int current_pos;
 
 Servo dvd_down;
 
@@ -86,53 +87,53 @@ void loop() {
 	//Serial.println(analogRead(JoyH_Y));
 	//Serial.println(analogRead(JoyV_Y));
 	//Serial.println(analogRead(JoyV_X));
-	Serial.println(digitalRead(JoyV_SW));
+	//Serial.println(digitalRead(JoyV_SW));
 
 	// Big
 	if (analogRead(JoyH_Y)<400)
 	{
-		move_big();
+		move_stepper(StepPinH_Y, 100);
 		digitalWrite(DirectionPinH_Y, LOW);
 	}
 
 	if (analogRead(JoyH_Y)>600)
 	{
-		move_big();
+		move_stepper(StepPinH_Y, 100);
 		digitalWrite(DirectionPinH_Y, HIGH);
 	}
 	
 	// Scanner
 	if (analogRead(JoyH_X)<400)
 	{
-		move_scanner();
+		move_stepper(StepPinH_X, 1);
 		digitalWrite(DirectionPinH_X, HIGH);
 	}
 
 	if (analogRead(JoyH_X)>600)
 	{
-		move_scanner();
+		move_stepper(StepPinH_X, 1);
 		digitalWrite(DirectionPinH_X, LOW);
 	}
 
 	// DVD
 	if (analogRead(JoyV_Y)<400)
 	{
-		move_dvd();
+		move_stepper(StepPinV_Y, 700);
 		digitalWrite(DirectionPinV_Y, HIGH);
 	}
 
 	if (analogRead(JoyV_Y)>600)
 	{
-		move_dvd();
+		move_stepper(StepPinV_Y, 700);
 		digitalWrite(DirectionPinV_Y, LOW);
 	}
 
 	// Servo
 
-	//if (analogRead(JoyV_X)<400)
+
 	if (digitalRead(JoyV_SW) == HIGH)
 	{
-		Serial.println(digitalRead(JoyV_SW));
+		//Serial.println(digitalRead(JoyV_SW));
 		if (dvd_down.read() != start_pos) {
 			// Slowly move back to restart
 			for (int i = end_pos; i > start_pos - 1; i--) {
@@ -142,52 +143,25 @@ void loop() {
 		}
 	}
 
-	//if (analogRead(JoyV_X)>600)
+
 	if (digitalRead(JoyV_SW) == LOW)
 	{
-		Serial.println(digitalRead(JoyV_SW));
+		//Serial.println(digitalRead(JoyV_SW));
 		if (dvd_down.read() != end_pos) {
 			for (int i = start_pos; i < end_pos + 1; i++) {
 				dvd_down.write(i);
 				delay(rot_speed);
+				
 			}
 		}
 	}
 
 }
 
-void move_big() // big motor
-{
-	digitalWrite(StepPinH_Y, HIGH);
-	delayMicroseconds(100); //big motor
+void move_stepper(int motor_pin, int delay_val) {
+	digitalWrite(motor_pin, HIGH);
+	delayMicroseconds(delay_val); //big motor
 
-	digitalWrite(StepPinH_Y, LOW);
-	delayMicroseconds(100); //big motor
-}
-
-void move_scanner()
-{
-	digitalWrite(StepPinH_X, HIGH);
-	delayMicroseconds(1); //scanner
-
-	digitalWrite(StepPinH_X, LOW);
-	delayMicroseconds(1); //scanner
-}
-
-void move_dvd()
-{
-	digitalWrite(StepPinV_Y, HIGH);
-	delayMicroseconds(700); //DVD
-
-	digitalWrite(StepPinV_Y, LOW);
-	delayMicroseconds(700); //DVD
-}
-
-void move_servo()
-{
-	digitalWrite(StepPinV_Y, HIGH);
-	delayMicroseconds(700); //DVD
-
-	digitalWrite(StepPinV_Y, LOW);
-	delayMicroseconds(700); //DVD
+	digitalWrite(motor_pin, LOW);
+	delayMicroseconds(delay_val); //big motor
 }
