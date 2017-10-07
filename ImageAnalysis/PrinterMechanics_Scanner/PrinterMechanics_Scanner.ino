@@ -17,10 +17,10 @@ Author: borbs
 // Vertical axis
 #define StepPinV_Y                6
 #define DirectionPinV_Y           7
+#define JoyV_SW                   8
 #define JoyV_Y                    A2
 #define JoyV_X                    A3
 #define ServoV                    10
-
 
 Servo dvd_down;
 
@@ -61,8 +61,10 @@ void setup() {
 	// DVD
 	pinMode(DirectionPinV_Y, OUTPUT);
 	pinMode(StepPinV_Y, OUTPUT);
-	digitalWrite(StepPinV_Y, LOW);
+	pinMode(JoyV_SW, INPUT);
 	digitalWrite(DirectionPinV_Y, LOW);
+	digitalWrite(StepPinV_Y, LOW);
+	digitalWrite(JoyV_SW, HIGH);
 
 	dvd_down.attach(ServoV);
 
@@ -121,18 +123,20 @@ void loop() {
 
 	// Servo
 
-	if (analogRead(JoyV_X)<400)
+	//if (analogRead(JoyV_X)<400)
+	if (digitalRead(JoyV_SW) == HIGH)
 	{
-		int y = map(analogRead(JoyV_X), 0, 1023, 900, 2100);
-		dvd_down.write(y);
-		delay(1000);
+		//int y = map(analogRead(JoyV_X), 0, 1023, 900, 2100);
+		dvd_down.write(900);
+		delay(20);
 	}
 
-	if (analogRead(JoyV_X)>600)
+	//if (analogRead(JoyV_X)>600)
+	if (digitalRead(JoyV_SW) == LOW)
 	{
-		int y = map(analogRead(JoyV_X), 0, 1023, 900, 2100);
-		dvd_down.write(y);
-		delay(1000);
+		//int y = map(analogRead(JoyV_X), 0, 1023, 900, 2100);
+		dvd_down.write(2100);
+		delay(20);
 	}
 
 }
