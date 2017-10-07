@@ -18,9 +18,13 @@ Author: borbs
 #define StepPinV_Y                6
 #define DirectionPinV_Y           7
 #define JoyV_SW                   8
+#define ServoV                    10
 #define JoyV_Y                    A2
 #define JoyV_X                    A3
-#define ServoV                    10
+
+int start_pos = 100;
+int end_pos = 145;
+int rot_speed = 30;
 
 Servo dvd_down;
 
@@ -67,6 +71,7 @@ void setup() {
 	digitalWrite(JoyV_SW, HIGH);
 
 	dvd_down.attach(ServoV);
+	dvd_down.write(start_pos);
 
 	Serial.begin(9600);
 	Serial.print("Ready");
@@ -79,8 +84,9 @@ void loop() {
 
 	//Serial.println(analogRead(JoyH_X));
 	//Serial.println(analogRead(JoyH_Y));
-	Serial.println(analogRead(JoyV_Y));
-	Serial.println(analogRead(JoyV_X));
+	//Serial.println(analogRead(JoyV_Y));
+	//Serial.println(analogRead(JoyV_X));
+	Serial.println(digitalRead(JoyV_SW));
 
 	// Big
 	if (analogRead(JoyH_Y)<400)
@@ -126,17 +132,26 @@ void loop() {
 	//if (analogRead(JoyV_X)<400)
 	if (digitalRead(JoyV_SW) == HIGH)
 	{
-		//int y = map(analogRead(JoyV_X), 0, 1023, 900, 2100);
-		dvd_down.write(900);
-		delay(20);
+		Serial.println(digitalRead(JoyV_SW));
+		if (dvd_down.read() != start_pos) {
+			// Slowly move back to restart
+			for (int i = end_pos; i > start_pos - 1; i--) {
+				dvd_down.write(i);
+				delay(rot_speed);
+			}
+		}
 	}
 
 	//if (analogRead(JoyV_X)>600)
 	if (digitalRead(JoyV_SW) == LOW)
 	{
-		//int y = map(analogRead(JoyV_X), 0, 1023, 900, 2100);
-		dvd_down.write(2100);
-		delay(20);
+		Serial.println(digitalRead(JoyV_SW));
+		if (dvd_down.read() != end_pos) {
+			for (int i = start_pos; i < end_pos + 1; i++) {
+				dvd_down.write(i);
+				delay(rot_speed);
+			}
+		}
 	}
 
 }
@@ -153,10 +168,10 @@ void move_big() // big motor
 void move_scanner()
 {
 	digitalWrite(StepPinH_X, HIGH);
-	delayMicroseconds(.01); //scanner
+	delayMicroseconds(1); //scanner
 
 	digitalWrite(StepPinH_X, LOW);
-	delayMicroseconds(.01); //scanner
+	delayMicroseconds(1); //scanner
 }
 
 void move_dvd()
