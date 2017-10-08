@@ -25,11 +25,16 @@ Author: borbs
 #define JoyV_Y                    A3
 
 // Servo
-int start_pos = 100;
-int end_pos = 145;
+int init_start_pos = 100;
+int init_end_pos = 145;
+int start_pos = init_start_pos;
+int end_pos = init_end_pos;
 int rot_speed = 30;
 int current_pos;
 
+// constants won't change:
+const long interval = 30;
+unsigned long previousMillis = 0;
 Servo dvd_down;
 
 
@@ -61,7 +66,7 @@ void setup() {
 	pinMode(JoyV_SW, INPUT);
 	digitalWrite(JoyV_SW, HIGH);
 	dvd_down.attach(ServoV);
-	dvd_down.write(start_pos);
+	dvd_down.write(init_start_pos);
 
 	Serial.begin(9600);
 	Serial.print("Ready");
@@ -114,25 +119,48 @@ void loop() {
 
 	// Servo
 	if (digitalRead(JoyV_SW) == HIGH) {
-		if (dvd_down.read() != start_pos) {
-			// Slowly move back to restart
-			for (int i = end_pos; i > start_pos - 1; i--) {
-				dvd_down.write(i);
-				delay(rot_speed);
+		if (dvd_down.read() != init_start_pos) {
+
+			unsigned long currentMillis = millis();
+			if (currentMillis - previousMillis >= interval) { // Execute on every interval
+
+				previousMillis = currentMillis; // Save the last time the motor moved
+				dvd_down.write(end_pos);
+				//move_stepper(StepPinH_Y, 100);
+				//digitalWrite(DirectionPinH_Y, LOW);
+				end_pos--;
+				
 			}
 		}
+		else {
+			end_pos = init_end_pos; // Reset end_pos
+		}
 	}
+
+
 
 
 	if (digitalRead(JoyV_SW) == LOW) {
-		if (dvd_down.read() != end_pos) {
-			for (int i = start_pos; i < end_pos + 1; i++) {
+		if (dvd_down.read() != init_end_pos) {
+			unsigned long currentMillis = millis();
+			if (currentMillis - previousMillis >= interval) { // Execute on every interval
+
+				previousMillis = currentMillis; // Save the last time the motor moved
+				dvd_down.write(start_pos);
+				start_pos++;
+			}
+		}
+		else {
+			start_pos = init_start_pos; // Reset start_pos
+		}
+		/*
+			for (int i = start_pos; i < init_end_pos + 1; i++) {
 				dvd_down.write(i);
 				delay(rot_speed);
 			}
-		}
+		*/
+		
 	}
-
 }
 
 void move_stepper(int motor_pin, int delay_val) {
@@ -143,8 +171,6 @@ void move_stepper(int motor_pin, int delay_val) {
 	delayMicroseconds(delay_val);
 
 }
-
-
 
 
 
