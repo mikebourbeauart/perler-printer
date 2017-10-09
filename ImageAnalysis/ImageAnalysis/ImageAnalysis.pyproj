@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>108a602d-1b73-4fa0-aa7b-d91ed19697df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>perler-bead-map-test\perler_colors.py</StartupFile>
+    <StartupFile>python\source\image_parsing\region_parse.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,8 +24,37 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ImageAnalysis.py" />
-    <Compile Include="perler-bead-map-test\perler_colors.py" />
+    <Compile Include="python\docs\doc_mods\image_parsing\image_parsing.rst">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\docs\doc_mods\image_parsing\image_parsing_modules.rst">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\references\bead-designer-test\beads.py" />
+    <Compile Include="python\references\bead-designer-test\gui\BeadDesignDesigner.py" />
+    <Compile Include="python\references\bead-designer-test\gui\beadgui.py" />
+    <Compile Include="python\references\bead-designer-test\gui\designer.py" />
+    <Compile Include="python\docs\conf.py" />
+    <Compile Include="python\docs\instructions.rst">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\source\arduino_comms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\source\image_parsing\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\source\arduino_comms\print_image.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\source\image_parsing\image_split.py" />
+    <Compile Include="python\references\perler-bead-map-test\perler_colors.py" />
+    <Compile Include="python\source\image_parsing\region_parse.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\source\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -41,14 +70,54 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="perler-bead-map-test\beads.hex.txt" />
-    <Content Include="perler-bead-map-test\LICENSE" />
-    <Content Include="perler-bead-map-test\Perler.gpl" />
-    <Content Include="perler-bead-map-test\README.md" />
+    <Content Include="python\docs\doc_mods\arduino_comms\arduino_comms.rst">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="python\docs\doc_mods\arduino_comms\arduino_comms_modules.rst">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="python\references\bead-designer-test\colours\all.csv" />
+    <Content Include="python\references\bead-designer-test\colours\bead_colour_chard_with_rgb_with_brand.pdf" />
+    <Content Include="python\references\bead-designer-test\colours\colourchart_GB.pdf" />
+    <Content Include="python\references\bead-designer-test\colours\colour_table.xls" />
+    <Content Include="python\references\bead-designer-test\colours\colour_table.xlsx" />
+    <Content Include="python\references\bead-designer-test\gui\beadgui.pyc" />
+    <Content Include="python\references\bead-designer-test\gui\beads.fbp" />
+    <Content Include="python\references\bead-designer-test\gui\designer.png" />
+    <Content Include="python\references\bead-designer-test\gui\generate.png" />
+    <Content Include="python\references\bead-designer-test\gui\open.png" />
+    <Content Include="python\references\bead-designer-test\gui\save.png" />
+    <Content Include="python\references\bead-designer-test\output\resulta00ff4de-db03-11e0-909d-aa2721d52be4.pdf" />
+    <Content Include="python\references\bead-designer-test\output\resulta7191aa1-db03-11e0-90fe-aa2721d52be4.pdf" />
+    <Content Include="python\references\bead-designer-test\output\resultac48774f-db03-11e0-a077-aa2721d52be4.pdf" />
+    <Content Include="python\references\bead-designer-test\output\resultaffec48f-a843-11e1-9268-d653334aac3d.pdf" />
+    <Content Include="python\docs\index.rst" />
+    <Content Include="python\docs\make.bat" />
+    <Content Include="python\docs\Makefile" />
+    <Content Include="python\references\perler-bead-map-test\beads.hex.txt" />
+    <Content Include="python\references\perler-bead-map-test\LICENSE" />
+    <Content Include="python\references\perler-bead-map-test\Perler.gpl" />
+    <Content Include="python\references\perler-bead-map-test\README.md" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="perler-bead-map-test\" />
+    <Folder Include="python\docs\doc_mods\" />
+    <Folder Include="python\docs\doc_mods\image_parsing\" />
+    <Folder Include="python\docs\doc_mods\arduino_comms\" />
+    <Folder Include="python\docs\images\" />
+    <Folder Include="python\references\bead-designer-test\" />
+    <Folder Include="python\references\bead-designer-test\colours\" />
+    <Folder Include="python\references\bead-designer-test\gui\" />
+    <Folder Include="python\references\bead-designer-test\output\" />
+    <Folder Include="python\docs\" />
+    <Folder Include="python\docs\_static\" />
+    <Folder Include="python\docs\_templates\" />
+    <Folder Include="python\" />
+    <Folder Include="python\references\" />
+    <Folder Include="python\source\" />
+    <Folder Include="python\references\perler-bead-map-test\" />
+    <Folder Include="python\source\image_parsing\" />
+    <Folder Include="python\source\arduino_comms\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
