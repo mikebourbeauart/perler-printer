@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>108a602d-1b73-4fa0-aa7b-d91ed19697df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>region_parse.py</StartupFile>
+    <StartupFile>source\region_parse.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,9 +28,13 @@
     <Compile Include="bead-designer-test\gui\BeadDesignDesigner.py" />
     <Compile Include="bead-designer-test\gui\beadgui.py" />
     <Compile Include="bead-designer-test\gui\designer.py" />
-    <Compile Include="image_split.py" />
+    <Compile Include="docs\conf.py" />
+    <Compile Include="source\print_image.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="source\image_split.py" />
     <Compile Include="perler-bead-map-test\perler_colors.py" />
-    <Compile Include="region_parse.py">
+    <Compile Include="source\region_parse.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -63,6 +67,12 @@
     <Content Include="bead-designer-test\output\resulta7191aa1-db03-11e0-90fe-aa2721d52be4.pdf" />
     <Content Include="bead-designer-test\output\resultac48774f-db03-11e0-a077-aa2721d52be4.pdf" />
     <Content Include="bead-designer-test\output\resultaffec48f-a843-11e1-9268-d653334aac3d.pdf" />
+    <Content Include="docs\api.rst">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="docs\index.rst" />
+    <Content Include="docs\make.bat" />
+    <Content Include="docs\Makefile" />
     <Content Include="perler-bead-map-test\beads.hex.txt" />
     <Content Include="perler-bead-map-test\LICENSE" />
     <Content Include="perler-bead-map-test\Perler.gpl" />
@@ -74,6 +84,10 @@
     <Folder Include="bead-designer-test\colours\" />
     <Folder Include="bead-designer-test\gui\" />
     <Folder Include="bead-designer-test\output\" />
+    <Folder Include="docs\" />
+    <Folder Include="docs\_static\" />
+    <Folder Include="docs\_templates\" />
+    <Folder Include="source\" />
     <Folder Include="perler-bead-map-test\" />
   </ItemGroup>
   <PropertyGroup>

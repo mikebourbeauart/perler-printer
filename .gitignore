@@ -241,3 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 ImageAnalysis/ImageAnalysis/env/
+ImageAnalysis/ImageAnalysis/docs/_build/

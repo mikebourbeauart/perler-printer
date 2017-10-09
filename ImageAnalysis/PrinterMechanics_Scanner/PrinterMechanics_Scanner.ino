@@ -77,48 +77,32 @@ void setup() {
 
 void loop() {
 
-	//Serial.println(analogRead(JoyH_X));
-	//Serial.println(analogRead(JoyH_Y));
-	Serial.println(analogRead(JoyV_Y));
-	Serial.println(analogRead(JoyV_X));
-	//Serial.println(digitalRead(JoyV_SW));
-
 	// Big
-	if (analogRead(JoyH_Y)<400)	{ // Up
-		move_stepper(StepPinH_Y, 100);
-		digitalWrite(DirectionPinH_Y, LOW);
+	if (analogRead(JoyH_Y)<400)	{
+		move_stepper(StepPinH_Y, DirectionPinH_Y, LOW, 100);  // Y Up
 	}
-
-	if (analogRead(JoyH_Y)>600)	{ // Down
-		move_stepper(StepPinH_Y, 100);
-		digitalWrite(DirectionPinH_Y, HIGH);
+	if (analogRead(JoyH_Y)>600)	{ 
+		move_stepper(StepPinH_Y, DirectionPinH_Y, HIGH, 100); // Y Down
 	}
 	
 	// Scanner
-	if (analogRead(JoyH_X)<400)	{ // Right
-		move_stepper(StepPinH_X, 1);
-		digitalWrite(DirectionPinH_X, HIGH);
+	if (analogRead(JoyH_X)<400)	{ 
+		move_stepper(StepPinH_X, DirectionPinH_X, HIGH, 1); // X Right
 	}
-
-	if (analogRead(JoyH_X)>600)	{ // Left
-		move_stepper(StepPinH_X, 1);
-		digitalWrite(DirectionPinH_X, LOW);
+	if (analogRead(JoyH_X)>600)	{ 
+		move_stepper(StepPinH_X, DirectionPinH_X, LOW, 1); // X Left
 	}
 
 	// DVD
-
-	if (analogRead(JoyV_Y)<400)	{ // Up
-		move_stepper(StepPinV_Y, 700);
-		digitalWrite(DirectionPinV_Y, HIGH);
+	if (analogRead(JoyV_Y)<400)	{ 
+		move_stepper(StepPinV_Y, DirectionPinV_Y, HIGH, 700); // Z Up
 	}
-
-	if (analogRead(JoyV_Y)>600)	{ // Down
-		move_stepper(StepPinV_Y, 700);
-		digitalWrite(DirectionPinV_Y, LOW);
+	if (analogRead(JoyV_Y)>600)	{ 
+		move_stepper(StepPinV_Y, DirectionPinV_Y, LOW, 700); // Z Down
 	}
 
 	// Servo 
-	if (digitalRead(JoyV_SW) == HIGH) { // Up
+	if (digitalRead(JoyV_SW) == HIGH) { // Tilt Up
 		if (dvd_down.read() != init_start_pos) {
 			unsigned long currentMillis = millis();
 
@@ -127,41 +111,43 @@ void loop() {
 				dvd_down.write(end_pos);
 				end_pos--;
 			}
-			move_stepper(StepPinH_Y, 1300);
-			digitalWrite(DirectionPinH_Y, HIGH);
+			move_stepper(StepPinH_Y, DirectionPinH_Y, HIGH, 1300); // Y Down
 		}
-		else {
-			end_pos = init_end_pos; // Reset end_pos
+	}
+	else {
+		if (end_pos != init_end_pos) {  // Reset end_pos
+			end_pos = init_end_pos;
 		}
 	}
 
-	if (digitalRead(JoyV_SW) == LOW) { // Down
+	if (digitalRead(JoyV_SW) == LOW) { // Tilt Down
 		if (dvd_down.read() != init_end_pos) {
 			unsigned long currentMillis = millis();
-			if (currentMillis - previousMillis >= interval) { // Execute on every interval
 
+			if (currentMillis - previousMillis >= interval) { // Execute on every interval
 				previousMillis = currentMillis; // Save the last time the motor moved
 				dvd_down.write(start_pos);
 				start_pos++;
 			}
-			move_stepper(StepPinH_Y, 1300);
-			digitalWrite(DirectionPinH_Y, LOW);
+			move_stepper(StepPinH_Y, DirectionPinH_Y, LOW, 1300); // Y Up
 		}
-		else {
-			start_pos = init_start_pos; // Reset start_pos
+	}
+	else {
+		if (start_pos != init_start_pos) { // Reset start_pos
+			start_pos = init_start_pos;
 		}
-
-		
 	}
 }
 
-void move_stepper(int motor_pin, int delay_val) {
+
+
+void move_stepper(int motor_pin, int dir_pin, uint8_t dir_val, int delay_val) {
 	digitalWrite(motor_pin, HIGH);
 	delayMicroseconds(delay_val);
 
 	digitalWrite(motor_pin, LOW);
 	delayMicroseconds(delay_val);
-
+	digitalWrite(dir_pin, dir_val);
 }
 
 

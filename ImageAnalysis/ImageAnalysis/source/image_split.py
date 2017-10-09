@@ -12,9 +12,9 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # Open image
-im = Image.open("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/image.bmp")
+im = Image.open("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/test2.bmp")
 px = im.load()
-peg_num = 29 # Size of pegboard. 2 = 2x2 board, 29 = 29x29, etc...
+peg_num = 6 # Size of pegboard. 2 = 2x2 board, 29 = 29x29, etc...
 
 logger.info('Image Format: {0}'.format(im.format))
 logger.info('Image Size: {0}'.format(im.size))
