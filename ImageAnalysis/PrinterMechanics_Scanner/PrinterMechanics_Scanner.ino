@@ -84,12 +84,12 @@ void loop() {
 	//Serial.println(digitalRead(JoyV_SW));
 
 	// Big
-	if (analogRead(JoyH_Y)<400)	{
+	if (analogRead(JoyH_Y)<400)	{ // Up
 		move_stepper(StepPinH_Y, 100);
 		digitalWrite(DirectionPinH_Y, LOW);
 	}
 
-	if (analogRead(JoyH_Y)>600)	{
+	if (analogRead(JoyH_Y)>600)	{ // Down
 		move_stepper(StepPinH_Y, 100);
 		digitalWrite(DirectionPinH_Y, HIGH);
 	}
@@ -120,25 +120,20 @@ void loop() {
 	// Servo
 	if (digitalRead(JoyV_SW) == HIGH) {
 		if (dvd_down.read() != init_start_pos) {
-
 			unsigned long currentMillis = millis();
-			if (currentMillis - previousMillis >= interval) { // Execute on every interval
 
+			if (currentMillis - previousMillis >= interval) { // Execute on every interval
 				previousMillis = currentMillis; // Save the last time the motor moved
 				dvd_down.write(end_pos);
-				//move_stepper(StepPinH_Y, 100);
-				//digitalWrite(DirectionPinH_Y, LOW);
 				end_pos--;
-				
 			}
+			move_stepper(StepPinH_Y, 1300);
+			digitalWrite(DirectionPinH_Y, HIGH);
 		}
 		else {
 			end_pos = init_end_pos; // Reset end_pos
 		}
 	}
-
-
-
 
 	if (digitalRead(JoyV_SW) == LOW) {
 		if (dvd_down.read() != init_end_pos) {
@@ -149,16 +144,13 @@ void loop() {
 				dvd_down.write(start_pos);
 				start_pos++;
 			}
+			move_stepper(StepPinH_Y, 1300);
+			digitalWrite(DirectionPinH_Y, LOW);
 		}
 		else {
 			start_pos = init_start_pos; // Reset start_pos
 		}
-		/*
-			for (int i = start_pos; i < init_end_pos + 1; i++) {
-				dvd_down.write(i);
-				delay(rot_speed);
-			}
-		*/
+
 		
 	}
 }
