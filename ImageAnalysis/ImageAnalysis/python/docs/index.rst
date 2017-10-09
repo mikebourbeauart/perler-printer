@@ -13,9 +13,4 @@ Perler Printer
    doc_mods/image_parsing/image_parsing
    doc_mods/arduino_comms/arduino_comms
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
