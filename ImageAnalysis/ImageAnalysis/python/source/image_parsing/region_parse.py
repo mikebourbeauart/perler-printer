@@ -1,3 +1,8 @@
+'''
+Parses regions
+'''
+
+
 from __future__ import print_function
 
 import os

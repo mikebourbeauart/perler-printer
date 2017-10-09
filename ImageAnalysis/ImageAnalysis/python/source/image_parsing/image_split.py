@@ -1,3 +1,8 @@
+'''
+Splits and image up into regions
+'''
+
+
 from __future__ import print_function
 
 import os

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 Modules
 =======
 
@@ -11,5 +5,9 @@ Modules
 .. automodule:: source
 	:members:
 
-.. automodule:: source.print_image
+
+.. automodule:: source.image_parsing
 	:members:
+
+
+

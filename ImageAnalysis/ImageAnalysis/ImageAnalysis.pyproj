@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>108a602d-1b73-4fa0-aa7b-d91ed19697df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>python\source\region_parse.py</StartupFile>
+    <StartupFile>python\source\image_parsing\region_parse.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,6 +24,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="python\docs\api.rst">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="python\references\bead-designer-test\beads.py" />
     <Compile Include="python\references\bead-designer-test\gui\BeadDesignDesigner.py" />
     <Compile Include="python\references\bead-designer-test\gui\beadgui.py" />
@@ -32,12 +35,18 @@
     <Compile Include="python\docs\instructions.rst">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="python\source\print_image.py">
+    <Compile Include="python\source\arduino_comms\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="python\source\image_split.py" />
+    <Compile Include="python\source\image_parsing\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\source\arduino_comms\print_image.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\source\image_parsing\image_split.py" />
     <Compile Include="python\references\perler-bead-map-test\perler_colors.py" />
-    <Compile Include="python\source\region_parse.py">
+    <Compile Include="python\source\image_parsing\region_parse.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="python\source\__init__.py">
@@ -73,9 +82,6 @@
     <Content Include="python\references\bead-designer-test\output\resulta7191aa1-db03-11e0-90fe-aa2721d52be4.pdf" />
     <Content Include="python\references\bead-designer-test\output\resultac48774f-db03-11e0-a077-aa2721d52be4.pdf" />
     <Content Include="python\references\bead-designer-test\output\resultaffec48f-a843-11e1-9268-d653334aac3d.pdf" />
-    <Content Include="python\docs\api.rst">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="python\docs\index.rst" />
     <Content Include="python\docs\make.bat" />
     <Content Include="python\docs\Makefile" />
@@ -97,6 +103,8 @@
     <Folder Include="python\references\" />
     <Folder Include="python\source\" />
     <Folder Include="python\references\perler-bead-map-test\" />
+    <Folder Include="python\source\image_parsing\" />
+    <Folder Include="python\source\arduino_comms\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
