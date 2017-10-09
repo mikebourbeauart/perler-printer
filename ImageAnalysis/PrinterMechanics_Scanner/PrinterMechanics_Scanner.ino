@@ -79,8 +79,8 @@ void loop() {
 
 	//Serial.println(analogRead(JoyH_X));
 	//Serial.println(analogRead(JoyH_Y));
-	//Serial.println(analogRead(JoyV_Y));
-	//Serial.println(analogRead(JoyV_X));
+	Serial.println(analogRead(JoyV_Y));
+	Serial.println(analogRead(JoyV_X));
 	//Serial.println(digitalRead(JoyV_SW));
 
 	// Big
@@ -95,30 +95,30 @@ void loop() {
 	}
 	
 	// Scanner
-	if (analogRead(JoyH_X)<400)	{
+	if (analogRead(JoyH_X)<400)	{ // Right
 		move_stepper(StepPinH_X, 1);
 		digitalWrite(DirectionPinH_X, HIGH);
 	}
 
-	if (analogRead(JoyH_X)>600)	{
+	if (analogRead(JoyH_X)>600)	{ // Left
 		move_stepper(StepPinH_X, 1);
 		digitalWrite(DirectionPinH_X, LOW);
 	}
 
 	// DVD
 
-	if (analogRead(JoyV_Y)<400)	{
+	if (analogRead(JoyV_Y)<400)	{ // Up
 		move_stepper(StepPinV_Y, 700);
 		digitalWrite(DirectionPinV_Y, HIGH);
 	}
 
-	if (analogRead(JoyV_Y)>600)	{
+	if (analogRead(JoyV_Y)>600)	{ // Down
 		move_stepper(StepPinV_Y, 700);
 		digitalWrite(DirectionPinV_Y, LOW);
 	}
 
-	// Servo
-	if (digitalRead(JoyV_SW) == HIGH) {
+	// Servo 
+	if (digitalRead(JoyV_SW) == HIGH) { // Up
 		if (dvd_down.read() != init_start_pos) {
 			unsigned long currentMillis = millis();
 
@@ -135,7 +135,7 @@ void loop() {
 		}
 	}
 
-	if (digitalRead(JoyV_SW) == LOW) {
+	if (digitalRead(JoyV_SW) == LOW) { // Down
 		if (dvd_down.read() != init_end_pos) {
 			unsigned long currentMillis = millis();
 			if (currentMillis - previousMillis >= interval) { // Execute on every interval
