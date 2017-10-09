@@ -1,7 +1,10 @@
 '''
-Splits and image up into regions
-'''
+Splits an image up into pegboard sized regions.
 
+.. todo:: add an image showing what it means to split up a region
+
+.. note:: Any region that is too small for a pegboard will be accounted for, so any size image can be parsed.
+'''
 
 from __future__ import print_function
 

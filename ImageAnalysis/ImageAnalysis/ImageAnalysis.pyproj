@@ -24,7 +24,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="python\docs\api.rst">
+    <Compile Include="python\docs\doc_mods\image_parsing\image_parsing.rst">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\docs\doc_mods\image_parsing\image_parsing_modules.rst">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="python\references\bead-designer-test\beads.py" />
@@ -67,6 +70,12 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="python\docs\doc_mods\arduino_comms\arduino_comms.rst">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="python\docs\doc_mods\arduino_comms\arduino_comms_modules.rst">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="python\references\bead-designer-test\colours\all.csv" />
     <Content Include="python\references\bead-designer-test\colours\bead_colour_chard_with_rgb_with_brand.pdf" />
     <Content Include="python\references\bead-designer-test\colours\colourchart_GB.pdf" />
@@ -92,6 +101,10 @@
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="python\docs\doc_mods\" />
+    <Folder Include="python\docs\doc_mods\image_parsing\" />
+    <Folder Include="python\docs\doc_mods\arduino_comms\" />
+    <Folder Include="python\docs\images\" />
     <Folder Include="python\references\bead-designer-test\" />
     <Folder Include="python\references\bead-designer-test\colours\" />
     <Folder Include="python\references\bead-designer-test\gui\" />

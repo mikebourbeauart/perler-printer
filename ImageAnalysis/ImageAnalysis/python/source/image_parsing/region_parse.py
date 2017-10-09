@@ -1,5 +1,8 @@
 '''
 Parses regions
+
+.. todo:: add an image showing what it means to parse a region
+
 '''
 
 

@@ -1,3 +1,0 @@
-'''
-Say some stuff here
-'''

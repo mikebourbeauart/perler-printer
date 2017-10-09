@@ -10,7 +10,8 @@ Perler Printer
    :maxdepth: 2
 
    instructions
-   api
+   doc_mods/image_parsing/image_parsing
+   doc_mods/arduino_comms/arduino_comms
 
 Indices and tables
 ==================
