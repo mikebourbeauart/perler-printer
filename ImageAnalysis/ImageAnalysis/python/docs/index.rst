@@ -9,6 +9,7 @@ Perler Printer
 .. toctree::
    :maxdepth: 2
 
+   instructions
    api
 
 Indices and tables
