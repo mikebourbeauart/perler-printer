@@ -98,9 +98,15 @@
     <Content Include="python\references\perler-bead-map-test\LICENSE" />
     <Content Include="python\references\perler-bead-map-test\Perler.gpl" />
     <Content Include="python\references\perler-bead-map-test\README.md" />
+    <Content Include="python\resources\bead_colors\perler_blank.xlsx" />
+    <Content Include="python\resources\bead_colors\Perler_CT.act" />
+    <Content Include="python\resources\bead_colors\Perler_swatches.aco" />
+    <Content Include="python\resources\image_dir\parse_image.bmp" />
+    <Content Include="python\resources\image_dir\parse_image.psd" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="python\resources\" />
     <Folder Include="python\docs\doc_mods\" />
     <Folder Include="python\docs\doc_mods\image_parsing\" />
     <Folder Include="python\docs\doc_mods\arduino_comms\" />
@@ -114,6 +120,10 @@
     <Folder Include="python\docs\_templates\" />
     <Folder Include="python\" />
     <Folder Include="python\references\" />
+    <Folder Include="python\resources\bead_colors\" />
+    <Folder Include="python\resources\image_dir\" />
+    <Folder Include="python\resources\json_data\" />
+    <Folder Include="python\resources\regions\" />
     <Folder Include="python\source\" />
     <Folder Include="python\references\perler-bead-map-test\" />
     <Folder Include="python\source\image_parsing\" />

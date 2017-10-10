@@ -20,7 +20,11 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # Open image
-im = Image.open("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/test2.bmp")
+root_dir = os.path.split(os.path.dirname(os.path.realpath(__file__)))[0].rpartition('\\')[0]
+print(root_dir)
+image_path = os.path.join(root_dir, 'resources', 'image_dir', 'test2.bmp')
+print(image_path)
+im = Image.open(image_path)
 px = im.load()
 peg_num = 6 # Size of pegboard. 2 = 2x2 board, 29 = 29x29, etc...
 
@@ -87,7 +91,7 @@ for rows in range(0, int(y_boards) + is_y_spare_pegs):
 		region = im.crop(box)
 
 		# Save region
-		region.save("C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/regions/test_{0}.bmp".format(region_id))
+		region.save(os.path.join(root_dir, 'resources', 'regions', 'test_{0}.bmp'.format(region_id)))
 
 		# Iterate on x values
 		tlx += peg_num

@@ -20,9 +20,9 @@ logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-regions_dir = "C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/regions"
-
-json_file = "C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/test2_data.json"
+root_dir = os.path.split(os.path.dirname(os.path.realpath(__file__)))[0].rpartition('\\')[0]
+regions_dir = os.path.join(root_dir, 'resources', 'regions')
+json_file = os.path.join(root_dir, 'resources', 'json_data', 'test2_data.json')
 
 json_data = OrderedDict()
 
@@ -30,7 +30,7 @@ for im_file in os.listdir(regions_dir):
 	#im_file = 'test_0-3.bmp'
 	# Open image
 	#im_file = "C:/Users/borbs/OneDrive/04_Job Stuff/03_Work Stuff/PERLER_BEAD_MACHINE_00000/regions/test_0-0.bmp"
-	im = Image.open(os.path.join(regions_dir,im_file))
+	im = Image.open(os.path.join(regions_dir, im_file))
 	px = im.load()
 
 	region_num = im_file.rpartition(".")[0].rpartition("_")[2]
