@@ -1,7 +1,5 @@
 '''
-
-
- color to use and where to put it 
+color to use and where to put it 
 '''
 
 def print_image():
