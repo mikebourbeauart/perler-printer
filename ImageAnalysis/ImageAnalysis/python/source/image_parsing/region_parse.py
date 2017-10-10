@@ -1,5 +1,5 @@
 '''
-Parses regions
+Parses region .bmp's to output a JSON file containing regions and colors per pixel
 
 .. todo:: add an image showing what it means to parse a region
 
@@ -22,7 +22,7 @@ logger.setLevel(logging.DEBUG)
 
 root_dir = os.path.split(os.path.dirname(os.path.realpath(__file__)))[0].rpartition('\\')[0]
 regions_dir = os.path.join(root_dir, 'resources', 'regions')
-json_file = os.path.join(root_dir, 'resources', 'json_data', 'test2_data.json')
+json_file = os.path.join(root_dir, 'resources', 'json_data', 'region_data.json')
 
 json_data = OrderedDict()
 

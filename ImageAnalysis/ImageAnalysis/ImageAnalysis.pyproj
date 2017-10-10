@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>108a602d-1b73-4fa0-aa7b-d91ed19697df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>python\source\image_parsing\region_parse.py</StartupFile>
+    <StartupFile>python\source\arduino_comms\print_image.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,6 +24,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="python\bin\envs.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="python\bin\launcher.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="python\docs\doc_mods\image_parsing\image_parsing.rst">
       <SubType>Code</SubType>
     </Compile>
@@ -103,9 +109,14 @@
     <Content Include="python\resources\bead_colors\Perler_swatches.aco" />
     <Content Include="python\resources\image_dir\parse_image.bmp" />
     <Content Include="python\resources\image_dir\parse_image.psd" />
-    <Content Include="requirements.txt" />
+    <Content Include="python\resources\json_data\region_data.json" />
+    <Content Include="python\resources\regions\test_0-0.bmp" />
+    <Content Include="python\resources\regions\test_0-1.bmp" />
+    <Content Include="python\resources\regions\test_1-0.bmp" />
+    <Content Include="python\resources\regions\test_1-1.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="python\bin\" />
     <Folder Include="python\resources\" />
     <Folder Include="python\docs\doc_mods\" />
     <Folder Include="python\docs\doc_mods\image_parsing\" />
