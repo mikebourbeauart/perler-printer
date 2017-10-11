@@ -28,13 +28,6 @@ while not connected:
 	print 'Arduino connected'
 
 
-'''
-while (1==1):
-	if (ser.inWaiting()>0):
-		myData = ser.readline()
-		print myData
-'''
-
 '''Reads and returns data from external JSON file
 
 @param mDataDir:  str, path of the info folder

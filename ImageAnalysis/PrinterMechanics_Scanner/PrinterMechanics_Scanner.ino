@@ -17,12 +17,16 @@ Author: borbs
 #define MS2 13
 
 // Vertical axis
-#define StepPinV_Y                6
-#define DirectionPinV_Y           7
-#define JoyV_SW                   8
-#define ServoV                    9
+#define StepPinV_Y                9
+#define DirectionPinV_Y           10
+#define JoyV_SW                   6
+#define ServoV                    11
 #define JoyV_X                    A2
 #define JoyV_Y                    A3
+
+// Limit Switches
+#define LimitH_Y_UP               7
+#define LimitH_X_LEFT             8
 
 // Servo
 int init_start_pos = 100;
@@ -32,9 +36,12 @@ int end_pos = init_end_pos;
 int rot_speed = 30;
 int current_pos;
 
-// constants won't change:
-const long interval = 30;
+// Time
+const long interval = 30; // constants won't change:
 unsigned long previousMillis = 0;
+
+int steps_y; // Used to set home positon afer homing is complete
+int steps_x; // Used to set home positon afer homing is complete
 Servo dvd_down;
 
 
@@ -67,27 +74,64 @@ void setup() {
 	dvd_down.attach(ServoV);
 	dvd_down.write(init_start_pos);
 
+	// Limit Switches
+	pinMode(LimitH_Y_UP, INPUT_PULLUP);
+	pinMode(LimitH_X_LEFT, INPUT_PULLUP);
+
+	int homed = 0;
+
+	// Start Homing procedure of Stepper Motor at startup
+	while (digitalRead(LimitH_Y_UP)) {  // Do this until the switch is activated   
+		move_y_up();
+		delayMicroseconds(500);
+	}
+	while (!digitalRead(LimitH_Y_UP)) { // Do this until the switch is not activated
+		move_y_down();
+		delayMicroseconds(500);
+	}
+	
+	while (digitalRead(LimitH_X_LEFT)) {
+		move_x_left();
+		delayMicroseconds(500);
+	}
+	while (!digitalRead(LimitH_X_LEFT)) { // Do this until the switch is not activated
+		move_x_right();
+		delayMicroseconds(500);
+	}
+	
+	steps_y = 0;
+	steps_x = 0;
 	Serial.begin(9600);
-	Serial.print("Ready");
+	Serial.println("Ready");
+
+	
 }
 
 
 void loop() {
 	// Joystick inputs
 	// Big
-	if (analogRead(JoyH_Y)<400)	{
-		move_y_up();
+	if (steps_y > 0) {
+		if (analogRead(JoyH_Y) < 400) {
+			move_y_up();
+		}
 	}
-	if (analogRead(JoyH_Y)>600)	{ 
-		move_y_down();
+	if (steps_y < 7904) {
+		if (analogRead(JoyH_Y) > 600) {
+			move_y_down();
+		}
 	}
-	
+
 	// Scanner
-	if (analogRead(JoyH_X)>600)	{ 
-		move_x_left();
+	if (steps_x > 0) {
+		if (analogRead(JoyH_X) > 600) {
+			move_x_left();
+		}
 	}
-	if (analogRead(JoyH_X)<400)	{ 
-		move_x_right();
+	if (steps_x  < 32000) {
+		if (analogRead(JoyH_X) < 400) {
+			move_x_right();
+		}
 	}
 
 	// DVD
@@ -109,18 +153,22 @@ void loop() {
 
 void move_y_up() {
 	move_stepper(StepPinH_Y, DirectionPinH_Y, LOW, 100);
+	steps_y--;
 }
 
 void move_y_down() {
 	move_stepper(StepPinH_Y, DirectionPinH_Y, HIGH, 100);
+	steps_y++;
 }
 
 void move_x_left() {
 	move_stepper(StepPinH_X, DirectionPinH_X, LOW, 1);
+	steps_x--;
 }
 
 void move_x_right() {
 	move_stepper(StepPinH_X, DirectionPinH_X, HIGH, 1);
+	steps_x++;
 }
 
 void move_z_up(){
