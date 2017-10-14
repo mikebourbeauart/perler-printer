@@ -41,10 +41,12 @@ json_file_path = os.path.join(
 
 logger.info('JSON path : "%s"' % json_file_path)
 
-with open(json_file_path, 'r') as handle:
-	json_data = json.load(handle, object_pairs_hook=OrderedDict) # Opens dict in order
+try:
+	with open(json_file_path, 'r') as handle:
+		json_data = json.load(handle, object_pairs_hook=OrderedDict) # Opens dict in order
 
-
+except:
+	logger.warning('No region data found. Run image_split then region_parse to create region data')
 
 #for key, val in json_data.iteritems():
 #print(key)

@@ -251,3 +251,4 @@ docs/_static
 docs/_templates
 ImageAnalysis/ImageAnalysis/python/resources/json_data/
 ImageAnalysis/ImageAnalysis/python/resources/regions/
+ImageAnalysis/PrinterMechanics_Scanner/__vm/
