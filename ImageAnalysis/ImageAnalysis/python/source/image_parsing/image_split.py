@@ -1,6 +1,9 @@
 '''
 Splits an image up into pegboard sized regions.
 
+.. image:: images/parse_image.bmp
+.. image:: images/parse_image_demo.bmp
+
 .. todo:: add an image showing what it means to split up a region
 
 .. note:: Any region that is too small for a pegboard will be accounted for, so any size image can be parsed.
@@ -22,7 +25,7 @@ logger.setLevel(logging.INFO)
 # Open image
 root_dir = os.path.split(os.path.dirname(os.path.realpath(__file__)))[0].rpartition('\\')[0]
 print(root_dir)
-image_path = os.path.join(root_dir, 'resources', 'image_dir', 'test2.bmp')
+image_path = os.path.join(root_dir, 'resources', 'image_dir', 'parse_image.bmp')
 print(image_path)
 
 try: 
