@@ -9,12 +9,13 @@ Splits an image up into pegboard sized regions.
 .. image:: /images/parse_image_demo.bmp
 
 **Naming Conventions**
+
 - Region naming in image_split.py is "row-column", with "0-0" being the name of the first region.
 - Pixel naming in region_parse.py uses the same convention. 
 
 .. image:: /images/region_naming.bmp
 
-.. note:: Each region has a maximum size of 30 x 30 pixels (The size of a standard pegboard).
+.. note:: Each region has a maximum size of 30 x 30 pixels.
 
 '''
 
