@@ -8,7 +8,7 @@ Splits an image up into pegboard sized regions.
 .. image:: /images/parse_image_demo.bmp
 
 Regions are named after their rows and columns starting with 0-0 (rows-columns) on the top left most region.
-For example the region 0-1 is the 2nd region on the first row.
+For another example the region 0-1 is the 2nd region on the first row.
 
 .. note:: Each region has a maximum size of 30 x 30 pixels
 
