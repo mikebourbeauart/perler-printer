@@ -1,29 +1,31 @@
 '''
 Outputs a region's pixel position and color to a JSON file.
 
-.. figure:: /images/parse_image.bmp
+.. figure:: /images/region_0_1.bmp.bmp
 
 	Region 0-1
 
 .. image:: /images/down_arrow.png
+	:align: center
 
 .. code-block:: json
-{
-	regions : {
-		0-0: {
-			0-0: (255,255,255),
-			0-1: (255,255,255),
-			0-2: (255,255,255),
-			0-3: (255,255,255)
-		},
-		0-1: {
-			0-0: (255,0,0),
-			0-1: (255,0,0),
-			0-2: (255,0,0),
-			0-3: (255,0,0)
+
+	{
+		regions : {
+			0-0: {
+				0-0: (255,255,255),
+				0-1: (255,255,255),
+				0-2: (255,255,255),
+				0-3: (255,255,255)
+			},
+			0-1: {
+				0-0: (255,0,0),
+				0-1: (255,0,0),
+				0-2: (255,0,0),
+				0-3: (255,0,0)
+			}
 		}
 	}
-}
 '''
 
 
