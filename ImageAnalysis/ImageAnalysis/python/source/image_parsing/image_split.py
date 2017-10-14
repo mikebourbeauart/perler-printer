@@ -6,9 +6,9 @@ Splits an image up into pegboard sized regions.
 	:align: center
 
 
-.. image:: /images/parse_image_demo.bmp
+.. figure:: /images/parse_image_demo.bmp
+	Each region is 29x29 pixels
 
-.. todo:: add an image showing what it means to split up a region
 
 .. note:: Any region that is too small for a pegboard will be accounted for, so any size image can be parsed.
 '''
