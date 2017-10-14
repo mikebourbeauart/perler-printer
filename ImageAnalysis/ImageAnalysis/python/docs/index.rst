@@ -6,6 +6,11 @@
 Perler Printer
 ==============
 
+A little helper machine that prints out images using perler beads. 
+
+If an image exceeds 29x29 pixels, the perler printer will separate it into regions for you.
+ 
+
 .. toctree::
    :maxdepth: 2
 
