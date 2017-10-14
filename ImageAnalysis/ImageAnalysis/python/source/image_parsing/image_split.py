@@ -6,12 +6,13 @@ Splits an image up into pegboard sized regions.
 	:align: center
 
 
-.. figure:: /images/parse_image_demo.bmp
-
-	Each region is 29x29 pixels
+.. image:: /images/parse_image_demo.bmp
 
 
-.. note:: Any region that is too small for a pegboard will be accounted for, so any size image can be parsed.
+.. note:: Each region has a maximum size of 30 x 30 pixels
+
+Regions are named after their rows and columns starting with 0-0 (rows-columns)
+For example the region 0-1 is the 2nd region on the first row.
 '''
 
 from __future__ import print_function

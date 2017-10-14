@@ -1,8 +1,29 @@
 '''
-Parses region .bmp's to output a JSON file containing regions and colors per pixel
+Outputs a region's pixel position and color to a JSON file.
 
-.. todo:: add an image showing what it means to parse a region
+.. figure:: /images/parse_image.bmp
 
+	Region 0-1
+
+.. image:: /images/down_arrow.png
+
+.. code-block:: json
+{
+	regions : {
+		0-0: {
+			0-0: (255,255,255),
+			0-1: (255,255,255),
+			0-2: (255,255,255),
+			0-3: (255,255,255)
+		},
+		0-1: {
+			0-0: (255,0,0),
+			0-1: (255,0,0),
+			0-2: (255,0,0),
+			0-3: (255,0,0)
+		}
+	}
+}
 '''
 
 
