@@ -28,9 +28,6 @@ sys.path.insert(0, os.path.abspath('..'))
 #	sys.modules[module] = mock.MagicMock()
 
 
-
-
-
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.

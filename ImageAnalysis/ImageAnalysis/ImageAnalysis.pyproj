@@ -33,9 +33,6 @@
     <Compile Include="python\docs\doc_mods\image_parsing\image_parsing.rst">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="python\docs\doc_mods\image_parsing\image_parsing_modules.rst">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="python\references\bead-designer-test\beads.py" />
     <Compile Include="python\references\bead-designer-test\gui\BeadDesignDesigner.py" />
     <Compile Include="python\references\bead-designer-test\gui\beadgui.py" />

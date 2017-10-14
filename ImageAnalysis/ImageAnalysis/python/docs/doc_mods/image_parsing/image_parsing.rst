@@ -4,8 +4,16 @@ Image Parsing
 .. automodule:: source.image_parsing
 	:members:
 
-.. toctree::
-   :maxdepth: 3
+Image Split
+-----------
 
-   image_parsing_modules
+.. automodule:: source.image_parsing.image_split
+	:members:
+
+
+Region Parsing
+--------------
+.. automodule:: source.image_parsing.region_parse
+	:members:
+
 
