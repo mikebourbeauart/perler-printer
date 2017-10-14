@@ -22,10 +22,10 @@ import mock
 sys.path.insert(0, os.path.abspath('..'))
 
 # Packages / modules to mock so that build does not fail.
-#for module in [
-#	"serial", "serial.Serial"
-#]:
-#	sys.modules[module] = mock.MagicMock()
+for module in [
+	"serial", "serial.Serial"
+]:
+	sys.modules[module] = mock.MagicMock()
 
 
 
