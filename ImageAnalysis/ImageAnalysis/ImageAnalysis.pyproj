@@ -82,6 +82,8 @@
     <Content Include="python\docs\doc_mods\arduino_comms\arduino_comms_modules.rst">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="python\docs\images\parse_image.bmp" />
+    <Content Include="python\docs\images\parse_image_demo.bmp" />
     <Content Include="python\references\bead-designer-test\colours\all.csv" />
     <Content Include="python\references\bead-designer-test\colours\bead_colour_chard_with_rgb_with_brand.pdf" />
     <Content Include="python\references\bead-designer-test\colours\colourchart_GB.pdf" />

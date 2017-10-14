@@ -1,8 +1,8 @@
 '''
 Splits an image up into pegboard sized regions.
 
-.. image:: images/parse_image.bmp
-.. image:: images/parse_image_demo.bmp
+.. image:: /images/parse_image.bmp
+.. image:: /images/parse_image_demo.bmp
 
 .. todo:: add an image showing what it means to split up a region
 
