@@ -85,24 +85,5 @@ try:
 		indent=4, separators=(',', ': ')
 	)
 
-	# Region dict example
-
-	'''
-	regions : {
-		1-1: {
-			1-1: (255,255,255),
-			1-2: (255,255,255),
-			1-2: (255,255,255),
-			2-2: (255,255,255)
-		},
-		1-2: {
-			1-1: (255,0,0),
-			1-2: (255,0,0),
-			1-2: (255,0,0),
-			2-2: (255,0,0)
-		}
-	}
-	'''
-
 except:
 	logger.warning('No regions found. Run image_split to create regions images')

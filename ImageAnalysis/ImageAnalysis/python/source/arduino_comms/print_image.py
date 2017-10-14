@@ -1,5 +1,8 @@
 '''
-color to use and where to put it 
+Sends pixel data from the json file to the arduino.
+
+Only 1 region will be printed at a time
+
 '''
 
 import os
@@ -13,8 +16,6 @@ import serial
 logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-
-
 
 root_dir = os.path.split(os.path.dirname(os.path.realpath(__file__)))[0].rpartition('\\')[0]
 json_file_path = os.path.join(root_dir, 'resources', 'json_data', 'region_data.json')

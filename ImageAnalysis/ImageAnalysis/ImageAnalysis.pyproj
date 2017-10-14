@@ -76,9 +76,6 @@
     <Content Include="python\docs\doc_mods\arduino_comms\arduino_comms.rst">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="python\docs\doc_mods\arduino_comms\arduino_comms_modules.rst">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="python\docs\images\down_arrow.png" />
     <Content Include="python\docs\images\parse_image.bmp" />
     <Content Include="python\docs\images\parse_image_demo.bmp" />
