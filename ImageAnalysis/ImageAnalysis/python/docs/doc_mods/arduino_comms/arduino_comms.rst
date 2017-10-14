@@ -4,8 +4,10 @@ Arduino Communication
 .. automodule:: source.arduino_comms
 	:members:
 
-.. toctree::
-   :maxdepth: 3
+Print Image
+===========
 
-   arduino_comms_modules
+.. automodule:: source.arduino_comms.print_image
+	:members:
+
 

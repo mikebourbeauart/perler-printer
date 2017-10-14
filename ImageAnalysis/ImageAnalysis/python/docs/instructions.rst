@@ -1,6 +1,7 @@
 Instructions
 ============
 
-1. Run image_split.py
-2. Run region_parse.py
-3. Run print_image.py
+1. Restrict an image's palette using the perler swatches in the bead_colors folder
+2. Run image_split.py
+3. Run region_parse.py
+4. Run print_image.py
