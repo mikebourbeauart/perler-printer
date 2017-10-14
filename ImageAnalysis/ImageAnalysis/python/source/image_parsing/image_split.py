@@ -7,6 +7,7 @@ Splits an image up into pegboard sized regions.
 
 
 .. figure:: /images/parse_image_demo.bmp
+
 	Each region is 29x29 pixels
 
 
