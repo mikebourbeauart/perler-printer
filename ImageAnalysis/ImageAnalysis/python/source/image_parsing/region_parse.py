@@ -1,13 +1,14 @@
 '''
 Outputs a region's pixel position and color to a JSON file.
 
-.. figure:: /images/region_0_1.bmp.bmp
+.. figure:: /images/region_0_1.bmp
 
 	Region 0-1
 
 .. image:: /images/down_arrow.png
 	:align: center
 
+json_data.json
 .. code-block:: json
 
 	{
