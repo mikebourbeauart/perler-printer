@@ -8,7 +8,8 @@ Outputs a region's pixel position and color to a JSON file.
 .. image:: /images/down_arrow.png
 	:align: center
 
-json_data.json
+Output file: json_data.json
+
 .. code-block:: json
 
 	{
@@ -24,9 +25,9 @@ json_data.json
 				0-1: (255,0,0),
 				0-2: (255,0,0),
 				0-3: (255,0,0)
-			}
-		}
-	}
+			},
+			...
+
 '''
 
 
