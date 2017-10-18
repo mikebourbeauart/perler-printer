@@ -1,11 +1,9 @@
 '''
 Outputs a region's pixel position and color to a JSON file.
 
-
-	
-
 .. figure:: /images/region_0_1.bmp
-	:width: 30%
+	:width: 60%
+	:align: center
 
 	Region 0-1
 
