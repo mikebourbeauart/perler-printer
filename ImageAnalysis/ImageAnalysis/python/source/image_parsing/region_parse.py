@@ -1,10 +1,8 @@
 '''
 Outputs a region's pixel position and color to a JSON file.
 
-.. image:: /images/pegboard.jpg
-	:width: 30%
 
-.. image:: /images/arrow_right.png
+	
 
 .. figure:: /images/region_0_1.bmp
 	:width: 30%
