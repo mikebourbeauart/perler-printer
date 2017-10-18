@@ -111,6 +111,9 @@ void setup() {
 void loop() {
 	// Joystick inputs
 	// Big
+	Serial.println(steps_y);
+	Serial.println(steps_x);
+
 	if (steps_y > 0) {
 		if (analogRead(JoyH_Y) < 400) {
 			move_y_up();
@@ -135,20 +138,23 @@ void loop() {
 	}
 
 	// DVD
-	if (analogRead(JoyV_Y)<400)	{ 
+	if (analogRead(JoyV_Y) < 400) {
 		move_z_up();
 	}
-	if (analogRead(JoyV_Y)>600)	{ 
+	if (analogRead(JoyV_Y) > 600) {
 		move_z_down();
 	}
-
+	
 	// Servo 
 	if (digitalRead(JoyV_SW) == HIGH) { // Tilt Up
 		tilt_z_up();
 	}
+	
+	
 	if (digitalRead(JoyV_SW) == LOW) { // Tilt Down
 		tilt_z_down();
 	}
+	
 }
 
 void move_y_up() {
@@ -181,14 +187,17 @@ void move_z_down() {
 
 void tilt_z_up(){
 	if (dvd_down.read() != init_start_pos) {
-		unsigned long currentMillis = millis();
+		if (steps_y < 7904) {
+			unsigned long currentMillis = millis();
 
-		if (currentMillis - previousMillis >= interval) { // Execute on every interval
-			previousMillis = currentMillis; // Save the last time the motor moved
-			dvd_down.write(end_pos);
-			end_pos--;
+			if (currentMillis - previousMillis >= interval) { // Execute on every interval
+				previousMillis = currentMillis; // Save the last time the motor moved
+				dvd_down.write(end_pos);
+				end_pos--;
+			}
+			move_stepper(StepPinH_Y, DirectionPinH_Y, HIGH, 1300); // Y Down
+			steps_y++;
 		}
-		move_stepper(StepPinH_Y, DirectionPinH_Y, HIGH, 1300); // Y Down
 	}
 	else {
 		if (end_pos != init_end_pos) {  // Reset end_pos
@@ -199,14 +208,17 @@ void tilt_z_up(){
 
 void tilt_z_down(){
 	if (dvd_down.read() != init_end_pos) {
-		unsigned long currentMillis = millis();
-		
-		if (currentMillis - previousMillis >= interval) { // Execute on every interval
-			previousMillis = currentMillis; // Save the last time the motor moved
-			dvd_down.write(start_pos);
-			start_pos++;
+		if (steps_y > 0) {
+			unsigned long currentMillis = millis();
+
+			if (currentMillis - previousMillis >= interval) { // Execute on every interval
+				previousMillis = currentMillis; // Save the last time the motor moved
+				dvd_down.write(start_pos);
+				start_pos++;
+			}
+			move_stepper(StepPinH_Y, DirectionPinH_Y, LOW, 1300); // Y Up
+			steps_y--;
 		}
-		move_stepper(StepPinH_Y, DirectionPinH_Y, LOW, 1300); // Y Up
 	}
 	else {
 		if (start_pos != init_start_pos) { // Reset start_pos
