@@ -3,7 +3,7 @@ Splits an image up into pegboard sized regions.
 
 .. image:: /images/parse_image.bmp
 
-.. image:: /images/down_arrow.png
+.. image:: /images/arrow_down.png
 	:align: center
 
 .. image:: /images/parse_image_demo.bmp
