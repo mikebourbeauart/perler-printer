@@ -77,7 +77,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="python\docs\images\arrow_down.png" />
-    <Content Include="python\docs\images\arrow_left.png" />
+    <Content Include="python\docs\images\arrow_right.png" />
     <Content Include="python\docs\images\parse_image.bmp" />
     <Content Include="python\docs\images\parse_image_demo.bmp" />
     <Content Include="python\docs\images\parse_image_demo.psd" />

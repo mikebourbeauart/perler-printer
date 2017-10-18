@@ -5,7 +5,6 @@ Outputs a region's pixel position and color to a JSON file.
 	:width: 30%
 
 .. image:: /images/arrow_right.png
-	:width: 30%
 
 .. figure:: /images/region_0_1.bmp
 	:width: 30%
