@@ -29,6 +29,7 @@ while not connected:
 	print 'Arduino connected'
 
 
+	
 '''Reads and returns data from external JSON file
 
 @param mDataDir:  str, path of the info folder

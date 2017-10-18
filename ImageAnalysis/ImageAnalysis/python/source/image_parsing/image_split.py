@@ -15,7 +15,7 @@ Splits an image up into pegboard sized regions.
 
 .. image:: /images/region_naming.bmp
 
-.. note:: Each region has a maximum size of 30 x 30 pixels.
+.. note:: Each region has a maximum size of 29 x 29 pixels.
 
 '''
 
@@ -41,7 +41,7 @@ print(image_path)
 try: 
 	im = Image.open(image_path)
 	px = im.load()
-	peg_num = 6 # Size of pegboard. 2 = 2x2 board, 29 = 29x29, etc...
+	peg_num = 29 # Size of pegboard. 2 = 2x2 board, 29 = 29x29, etc...
 
 	logger.info('Image Format: {0}'.format(im.format))
 	logger.info('Image Size: {0}'.format(im.size))
