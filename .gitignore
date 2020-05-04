@@ -249,3 +249,4 @@ ImageAnalysis/ImageAnalysis/python/docs/_build/
 docs/_build
 docs/_static
 docs/_templates
+venv/
